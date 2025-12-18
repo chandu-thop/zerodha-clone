@@ -1,0 +1,108 @@
+/* ===== Common Container ===== */
+.container {
+  width: 420px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* BUY / SELL specific IDs */
+#buy-window {
+  border-top: 4px solid #387ed1; /* blue */
+}
+
+#sell-window {
+  border-top: 4px solid #df514c; /* red */
+}
+
+/* ===== Order section ===== */
+.regular-order {
+  margin-bottom: 16px;
+}
+
+/* ===== Inputs ===== */
+.inputs {
+  display: flex;
+  gap: 12px;
+}
+
+fieldset {
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  padding: 6px 10px;
+  flex: 1;
+}
+
+legend {
+  font-size: 12px;
+  color: #666;
+  padding: 0 4px;
+}
+
+input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 4px 0;
+}
+
+/* ===== Buttons section ===== */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons span {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Button container */
+.buttons div {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== Base Button ===== */
+.btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+}
+
+/* BUY Button */
+.btn-blue {
+  background-color: #387ed1;
+  color: #fff;
+}
+
+.btn-blue:hover {
+  background-color: #2f6bb2;
+}
+
+/* SELL Button */
+.btn-red {
+  background-color: #df514c;
+  color: #fff;
+}
+
+.btn-red:hover {
+  background-color: #c94440;
+}
+
+/* Cancel Button */
+.btn-grey {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.btn-grey:hover {
+  background-color: #cfcfcf;
+}

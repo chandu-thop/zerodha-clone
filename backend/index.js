@@ -1,17 +1,19 @@
 require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
-const { HoldingModel } = require("./models/HoldingModel");
-const {PositionModel} =require("./models/PositionModel");
-const {OrderModel}=require("./models/OrderModel");
 const bodyParser = require("body-parser");
-const cors=require("cors");
+const cors = require("cors");
 
+const { HoldingModel } = require("./models/HoldingModel");
+const { PositionModel } = require("./models/PositionModel");
+const { OrderModel } = require("./models/OrderModel");
 
 const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
 
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -128,11 +130,10 @@ app.get("/addHoldings", async (req, res) => {
     },
   ];
 
-  // ✅ FIX: insert all data correctly
   await HoldingModel.insertMany(tempHoldings);
-
   res.send("Done!");
 });
+
 app.get("/addPositions", async (req, res) => {
   let tempPositions = [
     {
@@ -158,36 +159,37 @@ app.get("/addPositions", async (req, res) => {
   ];
 
   await PositionModel.insertMany(tempPositions);
-    
   res.send("Done!");
 });
 
 app.get("/allHoldings", async (req, res) => {
   try {
     const holdings = await HoldingModel.find();
-    res.json(holdings);   // ✅ works
+    res.json(holdings);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
 app.get("/allPositions", async (req, res) => {
   try {
     const Positions = await PositionModel.find();
-    res.json(Positions);   // ✅ works
+    res.json(Positions);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
 app.post("/newOrder", async (req, res) => {
   try {
     const { name, qty, price, mode } = req.body;
 
     if (
-  name === undefined ||
-  qty === undefined ||
-  price === undefined ||
-  mode === undefined
-) {
+      name === undefined ||
+      qty === undefined ||
+      price === undefined ||
+      mode === undefined
+    ) {
       return res.status(400).json({ error: "Missing fields" });
     }
 
@@ -200,9 +202,6 @@ app.post("/newOrder", async (req, res) => {
   }
 });
 
-
-
-// ✅ FIX: connect DB before starting server
 mongoose
   .connect(uri)
   .then(() => {

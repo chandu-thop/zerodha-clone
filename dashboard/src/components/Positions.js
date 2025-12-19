@@ -4,6 +4,7 @@ import { VerticalGraph } from "./VerticalGraph";
 
 
 import { positions } from "../data/data";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Positions = () => {
 

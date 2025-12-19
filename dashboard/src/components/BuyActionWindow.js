@@ -10,12 +10,15 @@ const BuyActionWindow = ({ uid, type }) => {
   const { closeBuyWindow, closeSellWindow } = useContext(GeneralContext);
 
   const handleActionClick = async () => {
-    await axios.post("http://localhost:3002/newOrder", {
-      name: uid,
-      qty: stockQuantity,
-      price: stockPrice,
-      mode: type, // BUY or SELL
-    });
+    await axios.post(
+  `${process.env.REACT_APP_API_URL}/newOrder`,
+  {
+    name: uid,
+    qty: stockQuantity,
+    price: stockPrice,
+    mode: type,
+  }
+);
 
     type === "BUY" ? closeBuyWindow() : closeSellWindow();
   };
